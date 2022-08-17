@@ -1,13 +1,13 @@
-FROM node:16.14
+FROM node:latest
 
-RUN npm install -g serve --force
+WORKDIR /app
+RUN npm install -g serve
+COPY package.json ./
 
-COPY package.json package.jso
-
-RUN npm install --force
+RUN npm install
 
 COPY . .
 
 RUN npm run build
 
-CMD serve -p $PORT -s build
+CMD serve -p $PORT -s dist
