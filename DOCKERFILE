@@ -1,9 +1,10 @@
 FROM node:16.14
 
-RUN npm install -g serve
+RUN npm install -g serve --force
 
-COPY package.json package.json
-RUN npm install
+COPY package.json package.jso
+
+RUN npm install --force
 
 COPY . .
 
